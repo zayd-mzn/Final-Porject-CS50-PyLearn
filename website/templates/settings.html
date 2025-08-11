@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block title %}Settings{% endblock %} {% block
+content %}
+<div class="container mt-5" style="max-width: 500px">
+  <h2 class="mb-4">Account Settings</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %}
+  <div
+    class="alert alert-{{ category }} alert-dismissible fade show"
+    role="alert"
+  >
+    {{ message }}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
+
+  <form method="POST" action="{{ url_for('auth.settings') }}">
+    <div class="mb-3">
+      <label for="username" class="form-label">New Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        name="username"
+        value="{{ current_user.username }}"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Current Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+{% endblock %}
