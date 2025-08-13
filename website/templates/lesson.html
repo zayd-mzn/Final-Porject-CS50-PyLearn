@@ -1,5 +1,362 @@
 {% extends "base.html" %} {% block title %}{{ lesson.title }}{% endblock %} {%
 block content %}
-<h1>{{ lesson.title }}</h1>
-<pre>{{ lesson.content }}</pre>
+<h1>
+  {{ lesson.title }}
+  {% if progress.completed %}
+    <span class="text-success" style="font-size: 0.7em">(Complete)</span>
+  {% else %}
+    <span class="text-danger" style="font-size: 0.7em">(Incomplete)</span>
+  {% endif %}
+</h1>
+
+<section>
+  <p>Welcome to the first lesson! Here we learn about Python basics.</p>
+</section>
+
+<section>
+  <h2>1. What is Python?</h2>
+  <p>
+    Python is a <strong>high-level</strong>, interpreted programming language
+    known for its <strong>simplicity</strong> – its syntax is close to plain
+    English –, <strong>versatility</strong> – used in web development, data
+    science, AI, automation, and more –, and
+    <strong>community support</strong> – with many libraries and frameworks to
+    help you build faster.
+  </p>
+</section>
+
+<section>
+  <h2>2. Why Learn Python?</h2>
+  <ul>
+    <li>Easy to learn for beginners</li>
+    <li>Powerful enough for professionals</li>
+    <li>Cross-platform (Windows, macOS, Linux)</li>
+    <li>Huge job market demand</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3. Your First Python Program</h2>
+  <p>In Python, printing text is as simple as:</p>
+  <pre><code>print("Hello, world!")</code></pre>
+  <p>
+    <code>print()</code> is a built-in function that displays output on the
+    screen. Text is written inside quotes (<code>" "</code>).
+  </p>
+</section>
+
+<section>
+  <h2>4. Python Basics</h2>
+  <h3>Variables</h3>
+  <p>Variables store information in memory:</p>
+  <pre><code>name = "Alice"
+age = 20</code></pre>
+  <p>
+    <code>name</code> is a string (<code>"Alice"</code>), <code>age</code> is an
+    integer (<code>20</code>).
+  </p>
+
+  <h3>Data Types</h3>
+  <ul>
+    <li><code>str</code> → "Hello"</li>
+    <li><code>int</code> → 42</li>
+    <li><code>float</code> → 3.14</li>
+    <li><code>bool</code> → True / False</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Comments</h2>
+  <p>Comments are ignored by Python and used to explain code:</p>
+  <pre><code># This is a comment</code></pre>
+</section>
+
+<section>
+  <h2>6. Basic Math in Python</h2>
+  <pre><code>x = 10
+y = 3
+print(x + y)  # Addition → 13
+print(x - y)  # Subtraction → 7
+print(x * y)  # Multiplication → 30
+print(x / y)  # Division → 3.333...
+print(x // y) # Floor division → 3
+print(x % y)  # Modulus → 1</code></pre>
+</section>
+
+<section>
+  <h2>7. Built-in functions</h2>
+  <p>
+    There are many built-in functions that help when writing a code in python,
+    for example :
+  </p>
+  <ul>
+    <li>To read input from the user : <code>input()</code></li>
+    <li>To get the absolute value of a number : <code>abs()</code></li>
+    <li>
+      To convert to an integer, float, string : <code>int()</code>,
+      <code>float()</code>, <code>str()</code>
+    </li>
+    <li>
+      To get the minimum(maximum) value in a set of numbers :
+      <code>min()</code>(<code>max()</code>)
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>7. Next Steps</h2>
+  <p>After learning the basics, you’ll explore:</p>
+  <ul>
+    <li>Conditionals (<code>if</code>, <code>else</code>)</li>
+    <li>Loops (<code>for</code>, <code>while</code>)</li>
+    <li>Functions</li>
+    <li>Modules and Libraries</li>
+  </ul>
+</section>
+
+<h2>Complete the Code</h2>
+<p>
+  Fill in the missing keyword so the code prints <strong>Hello, world</strong>.
+</p>
+
+<pre
+  id="code-box"
+  style="
+    font-family: monospace;
+    font-size: 1.05rem;
+    white-space: pre;
+    padding: 8px;
+    border-radius: 6px;
+    background: #f5f5f5;
+  "
+>
+<input id="answer" autocomplete="off" spellcheck="false"
+       style="display:inline-block; vertical-align:middle;
+              font-family:inherit; font-size:inherit; line-height:1;
+              padding:2px 8px; margin:0; border:0; border-bottom:2px solid #000;
+              background:transparent; width:8ch; text-align:center;"> ("Hello, world")
+</pre>
+
+<button id="submit">Submit</button>
+<p id="feedback" aria-live="polite"></p>
+
+<script>
+  const input = document.getElementById("answer");
+  const feedback = document.getElementById("feedback");
+  const submit = document.getElementById("submit");
+  const codeBox = document.getElementById("code-box");
+
+  input.focus();
+
+  function check() {
+    const val = input.value.trim().toLowerCase();
+    if (val === "print") {
+      feedback.textContent = "That is correct!";
+      feedback.style.color = "green";
+      codeBox.style.background = "#5CE65C";
+    } else {
+      feedback.textContent = "Wrong answer! Try again.";
+      feedback.style.color = "red";
+      codeBox.style.background = "#fa7575";
+      input.value = "";
+      input.focus();
+    }
+  }
+
+  submit.addEventListener("click", check);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      check();
+    }
+  });
+</script>
+
+<p>
+  Fill in the missing function so the code prints
+  <strong>the largest number</strong>.
+</p>
+
+<pre
+  id="code-box2"
+  style="
+    font-family: monospace;
+    font-size: 1.05rem;
+    white-space: pre;
+    padding: 8px;
+    border-radius: 6px;
+    background: #f5f5f5;
+  "
+>
+print(<input id="answer2" autocomplete="off" spellcheck="false"
+       style="display:inline-block; vertical-align:middle;
+              font-family:inherit; font-size:inherit; line-height:1;
+              padding:2px 8px; margin:0; border:0; border-bottom:2px solid #000;
+              background:transparent; width:8ch; text-align:center;">([4, 7, 1]))
+</pre>
+
+<button id="submit2">Submit</button>
+<p id="feedback2" aria-live="polite"></p>
+
+<script>
+  const input2 = document.getElementById("answer2");
+  const feedback2 = document.getElementById("feedback2");
+  const submit2 = document.getElementById("submit2");
+  const codeBox2 = document.getElementById("code-box2");
+
+  input2.focus();
+
+  function check2() {
+    const val = input2.value.trim().toLowerCase();
+    if (val === "max") {
+      feedback2.textContent = "That is correct!";
+      feedback2.style.color = "green";
+      codeBox2.style.background = "#5CE65C";
+    } else {
+      feedback2.textContent = "Wrong answer! Try again.";
+      feedback2.style.color = "red";
+      codeBox2.style.background = "#fa7575";
+      input2.value = "";
+      input2.focus();
+    }
+  }
+
+  submit2.addEventListener("click", check2);
+  input2.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      check2();
+    }
+  });
+</script>
+
+<p>
+  Fill in the missing lines to swap <code>a</code> and <code>b</code> using a
+  temp variable.
+</p>
+
+<pre
+  id="code-box4"
+  style="
+    font-family: monospace;
+    font-size: 1.05rem;
+    white-space: pre;
+    padding: 8px;
+    border-radius: 6px;
+    background: #f5f5f5;
+  "
+>
+a = 1
+b = 2
+<input id="answer4_1" autocomplete="off" spellcheck="false"
+       style="display:inline-block; vertical-align:middle;
+              font-family:inherit; font-size:inherit; line-height:1;
+              padding:2px 8px; margin:0; border:0; border-bottom:2px solid #000;
+              background:transparent; width:14ch; text-align:left;">
+<input id="answer4_2" autocomplete="off" spellcheck="false"
+       style="display:inline-block; vertical-align:middle;
+              font-family:inherit; font-size:inherit; line-height:1;
+              padding:2px 8px; margin:0; border:0; border-bottom:2px solid #000;
+              background:transparent; width:14ch; text-align:left;">
+<input id="answer4_3" autocomplete="off" spellcheck="false"
+       style="display:inline-block; vertical-align:middle;
+              font-family:inherit; font-size:inherit; line-height:1;
+              padding:2px 8px; margin:0; border:0; border-bottom:2px solid #000;
+              background:transparent; width:14ch; text-align:left;">
+</pre>
+
+<button id="submit4">Submit</button>
+<p id="feedback4" aria-live="polite"></p>
+
+<script>
+  const ans41 = document.getElementById("answer4_1");
+  const ans42 = document.getElementById("answer4_2");
+  const ans43 = document.getElementById("answer4_3");
+  const feedback4 = document.getElementById("feedback4");
+  const submit4 = document.getElementById("submit4");
+  const codeBox4 = document.getElementById("code-box4");
+
+  ans41.focus();
+
+  function normalize(str) {
+    return str.trim().toLowerCase().replace(/\s+/g, "");
+  }
+
+  function check4() {
+    const val1 = normalize(ans41.value);
+    const val2 = normalize(ans42.value);
+    const val3 = normalize(ans43.value);
+
+    const seq1 = ["temp=a", "a=b", "b=temp"];
+
+    const seq2 = ["temp=b", "b=a", "a=temp"];
+
+    const matchesSeq1 =
+      val1 === seq1[0] && val2 === seq1[1] && val3 === seq1[2];
+    const matchesSeq2 =
+      val1 === seq2[0] && val2 === seq2[1] && val3 === seq2[2];
+
+    if (matchesSeq1 || matchesSeq2) {
+      feedback4.textContent = "That is correct!";
+      feedback4.style.color = "green";
+      codeBox4.style.background = "#5CE65C";
+    } else {
+      feedback4.textContent = "Wrong answer! Try again.";
+      feedback4.style.color = "red";
+      codeBox4.style.background = "#fa7575";
+      ans41.value = "";
+      ans42.value = "";
+      ans43.value = "";
+      ans41.focus();
+    }
+  }
+
+  submit4.addEventListener("click", check4);
+  ans41.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      ans42.focus();
+    }
+  });
+  ans42.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      ans43.focus();
+    }
+  });
+  ans43.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      check4();
+    }
+  });
+</script>
+
+<form id="finishForm" action="{{ url_for('views.complete_lesson1') }}" method="POST" style="display:none;">
+    <button type="submit" class="btn btn-success mt-3">Finish Lesson ✅</button>
+</form>
+
+<script>
+    function allExercisesCorrect() {
+        return feedback.textContent === "That is correct!"
+            && feedback2.textContent === "That is correct!"
+            && feedback4.textContent === "That is correct!";
+    }
+
+    function checkAllDone() {
+        if (allExercisesCorrect()) {
+            document.getElementById("finishForm").style.display = "block";
+        }
+    }
+
+    const oldCheck = check;
+    check = function() { oldCheck(); checkAllDone(); };
+
+    const oldCheck2 = check2;
+    check2 = function() { oldCheck2(); checkAllDone(); };
+
+    const oldCheck4 = check4;
+    check4 = function() { oldCheck4(); checkAllDone(); };
+</script> 
+
 {% endblock %}

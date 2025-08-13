@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Lessons</h2>
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Lesson 1</h5>
+        <p class="card-text">Python basics.</p>
+        <a href="{{ url_for('views.lesson') }}" class="btn btn-outline-primary">Lesson 1</a>
+        <p class="mt-2">
+          {% if progress.get(1) %}
+            <span class="text-success">Complete</span>
+          {% else %}
+            <span class="text-danger">Incomplete</span>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Lesson 2</h5>
+        <p class="card-text">Start lesson 2.</p>
+        <a href="{{ url_for('views.lesson2') }}" class="btn btn-outline-primary">Lesson 2</a>
+        <p class="mt-2">
+          {% if progress.get(2) %}
+            <span class="text-success">Complete</span>
+          {% else %}
+            <span class="text-danger">Incomplete</span>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
