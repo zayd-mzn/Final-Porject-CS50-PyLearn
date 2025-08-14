@@ -38,3 +38,15 @@ def lesson2():
     
     return render_template('lesson2.html', user=current_user, progress=progress)
 
+@views.route('/complete_lesson1', methods=['POST'])
+@login_required
+def complete_lesson1():
+    progress = UserProgress.query.filter_by(user_id=current_user.id, lesson_id=1).first()
+    if not progress:
+        progress = UserProgress(user_id=current_user.id, lesson_id=1, completed=True)
+        db.session.add(progress)
+    else:
+        progress.completed = True
+    db.session.commit()
+
+    return redirect(url_for('views.lesson2'))

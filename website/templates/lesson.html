@@ -333,12 +333,11 @@ b = 2
 </script>
 
 <div class="text-center mt-4">
-    <a id="finishButton"
-       href="{{ url_for('views.lesson2', lesson_id=2) }}"
-       class="btn btn-success btn-lg px-4 py-2"
-       style="display:none; font-size: 1.5rem;">
-       Finish Lesson ✅
-    </a>
+  <form action="{{ url_for('views.complete_lesson1') }}" method="POST" style="display:none;" id="finishForm">
+      <button type="submit" class="btn btn-success btn-lg px-4 py-2" style="font-size: 1.5rem;">
+          Finish Lesson ✅
+      </button>
+  </form>
 </div>
 
 <script>
@@ -350,7 +349,7 @@ b = 2
 
     function checkAllDone() {
         if (allExercisesCorrect()) {
-            document.getElementById("finishButton").style.display = "inline-block";
+            document.getElementById("finishForm").style.display = "inline-block";
         }
     }
 
