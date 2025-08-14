@@ -232,7 +232,7 @@ print(<input id="answer2" autocomplete="off" spellcheck="false"
 
 <p>
   Fill in the missing lines to swap <code>a</code> and <code>b</code> using a
-  temp variable.
+  temp variable :<strong> make sure the variable is named <code>temp</code>. </strong>
 </p>
 
 <pre
@@ -332,9 +332,14 @@ b = 2
   });
 </script>
 
-<form id="finishForm" method="POST" style="display:none;">
-    <button type="submit" class="btn btn-success mt-3">Finish Lesson ✅</button>
-</form>
+<div class="text-center mt-4">
+    <a id="finishButton"
+       href="{{ url_for('views.lesson2', lesson_id=2) }}"
+       class="btn btn-success btn-lg px-4 py-2"
+       style="display:none; font-size: 1.5rem;">
+       Finish Lesson ✅
+    </a>
+</div>
 
 <script>
     function allExercisesCorrect() {
@@ -345,7 +350,7 @@ b = 2
 
     function checkAllDone() {
         if (allExercisesCorrect()) {
-            document.getElementById("finishForm").style.display = "block";
+            document.getElementById("finishButton").style.display = "inline-block";
         }
     }
 
